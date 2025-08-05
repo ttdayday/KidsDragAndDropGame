@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -7,6 +9,12 @@ public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public ShapeType shapeType;
     public bool isPlaced = false;
 
+    [Header("Size Multipliers")]
+    public float trayScale = 1.0f;      // Size 1.0 - original editor size
+    public float dragScale = 0.9f;      // Size 0.9 - when being dragged
+    public float slotScale = 1.5f;      // Size 1.5 - when correctly placed in slot
+
+    private Vector3 originalScale;      // Remember the original proportions from editor
     private Vector3 startPosition;
     private Transform startParent;
     private CanvasGroup canvasGroup;
@@ -29,6 +37,12 @@ public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         startPosition = transform.position;
         startParent = transform.parent;
+
+        // Remember the original scale from editor (this becomes our "1.0" reference)
+        originalScale = transform.localScale;
+
+        // Make sure we start at tray scale (should already be correct from editor)
+        transform.localScale = originalScale * trayScale;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -37,6 +51,9 @@ public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         startPosition = transform.position;
         startParent = transform.parent;
+
+        // Scale to DRAG SIZE (0.8) maintaining original proportions
+        transform.localScale = originalScale * dragScale;
 
         // Make semi-transparent while dragging
         canvasGroup.alpha = 0.7f;
@@ -54,7 +71,7 @@ public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         if (isPlaced) return;
 
-        // Follow the mouse/finger
+        // Follow the mouse/finger (maintain drag scale)
         rectTransform.anchoredPosition += eventData.delta;
     }
 
@@ -69,7 +86,7 @@ public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         bool wasPlaced = false;
 
         // Raycast to find what we're over
-        var results = new System.Collections.Generic.List<RaycastResult>();
+        var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
 
         foreach (var result in results)
@@ -79,20 +96,44 @@ public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             {
                 slot.PlaceShape(this);
                 wasPlaced = true;
+
+                // Scale to match the slot size exactly
+                ScaleToMatchSlot(slot);
                 break;
             }
         }
 
-        // If not placed correctly, return to start
+        // If not placed correctly, return to tray and original size
         if (!wasPlaced)
         {
             transform.position = startPosition;
             transform.SetParent(startParent);
+            // Return to TRAY SIZE (1.0)
+            transform.localScale = originalScale * trayScale;
         }
 
         // Play drop sound
         if (dropSound != null)
             AudioSource.PlayClipAtPoint(dropSound, Camera.main.transform.position, 0.5f);
+    }
+
+    private void ScaleToMatchSlot(ShapeSlot slot)
+    {
+        // Get the slot's RectTransform
+        RectTransform slotRect = slot.GetComponent<RectTransform>();
+
+        // Get the shape's RectTransform  
+        RectTransform shapeRect = GetComponent<RectTransform>();
+
+        // Calculate scale needed to match slot size
+        float scaleX = slotRect.rect.width / (shapeRect.rect.width / originalScale.x);
+        float scaleY = slotRect.rect.height / (shapeRect.rect.height / originalScale.y);
+
+        // Use the smaller scale to ensure shape fits within slot
+        float finalScale = Mathf.Min(scaleX, scaleY);
+
+        // Apply the calculated scale while maintaining proportions
+        transform.localScale = originalScale * finalScale;
     }
 
     public void ResetPosition()
@@ -102,5 +143,13 @@ public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         transform.SetParent(startParent);
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+
+        // Return to TRAY SIZE (1.0) when reset
+        transform.localScale = originalScale * trayScale;
+    }
+
+    public void UpdateStartPosition(Vector3 newPosition)
+    {
+        startPosition = newPosition;
     }
 }
