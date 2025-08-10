@@ -1113,8 +1113,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceptedShapeType: 3
   isOccupied: 0
-  normalColor: {r: 0, g: 0, b: 0, a: 1}
-  highlightColor: {r: 0.25, g: 0.25, b: 0.25, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 0.7607843, g: 0.85490197, b: 0.73333335, a: 1}
   correctColor: {r: 0, g: 1, b: 0, a: 1}
   correctSound: {fileID: 0}
   wrongSound: {fileID: 0}
@@ -1138,7 +1138,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8b1f8d8f39fb99c498a07180c090fedb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3ecd64993102c96479d3111de5804a50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1276,8 +1276,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceptedShapeType: 5
   isOccupied: 0
-  normalColor: {r: 0, g: 0, b: 0, a: 1}
-  highlightColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 0.7607843, g: 0.85490197, b: 0.73333335, a: 1}
   correctColor: {r: 0, g: 1, b: 0, a: 1}
   correctSound: {fileID: 0}
   wrongSound: {fileID: 0}
@@ -1301,7 +1301,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 31d81ab1f2014db48bb0cbb71f7bfc2c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 40730caa6380b124984cb2bd7b110645, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1371,8 +1371,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceptedShapeType: 0
   isOccupied: 0
-  normalColor: {r: 0, g: 0, b: 0, a: 1}
-  highlightColor: {r: 0.2509804, g: 0.2509804, b: 0.2509804, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 0.7607843, g: 0.85490197, b: 0.73333335, a: 1}
   correctColor: {r: 0, g: 1, b: 0, a: 1}
   correctSound: {fileID: 0}
   wrongSound: {fileID: 0}
@@ -1396,7 +1396,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 65079328fc4e05c4c9a85c1137a0c78f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4793186be8e8a6b439360be93336ae5d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1819,7 +1819,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2133c3436e3b9f7449d887f4e279d5f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: da1781a04a99c10409af5f87e94a9e5c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1851,8 +1851,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceptedShapeType: 4
   isOccupied: 0
-  normalColor: {r: 0, g: 0, b: 0, a: 1}
-  highlightColor: {r: 0.25, g: 0.25, b: 0.25, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 0.7596602, g: 0.8553459, b: 0.73430634, a: 1}
   correctColor: {r: 0, g: 1, b: 0, a: 1}
   correctSound: {fileID: 0}
   wrongSound: {fileID: 0}
