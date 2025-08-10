@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 261870301}
   - component: {fileID: 261870300}
   m_Layer: 5
-  m_Name: Rectangle Shape
+  m_Name: Banana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -458,8 +458,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -330}
-  m_SizeDelta: {x: 180, y: 126}
+  m_AnchoredPosition: {x: 215.52673, y: -319.68365}
+  m_SizeDelta: {x: 148.9467, y: 146.6327}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &261870300
 BoxCollider2D:
@@ -493,7 +493,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.13142014, y: -0.2983532}
+  m_Offset: {x: 1.2526245, y: 0.62442017}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -504,7 +504,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 112.21537, y: 118.16733}
+  m_Size: {x: 175.88464, y: 169.841}
   m_EdgeRadius: 0
 --- !u!114 &261870301
 MonoBehaviour:
@@ -518,7 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed376b07932bbc4d84c3769b016cc47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shapeType: 5
+  shapeType: 1
   isPlaced: 0
   trayScale: 1
   dragScale: 0.8
@@ -545,7 +545,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 31d81ab1f2014db48bb0cbb71f7bfc2c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01cbe9ca64ff3d64e839edc5a452d8f1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -790,7 +790,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fc34df36c18d48b42a8f8e49e16d27fa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: da3b2e7b3af75d045b6893fe2a9cec5a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -900,6 +900,147 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &610705948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 610705949}
+  - component: {fileID: 610705953}
+  - component: {fileID: 610705952}
+  - component: {fileID: 610705951}
+  - component: {fileID: 610705950}
+  m_Layer: 5
+  m_Name: Apple
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &610705949
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610705948}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 2097949987}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 209.36205, y: -926.21906}
+  m_SizeDelta: {x: 148.3297, y: 161.5619}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!61 &610705950
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610705948}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.43634033, y: -2.4689713}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 176.17322, y: 190.66289}
+  m_EdgeRadius: 0
+--- !u!114 &610705951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610705948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed376b07932bbc4d84c3769b016cc47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shapeType: 4
+  isPlaced: 0
+  trayScale: 1
+  dragScale: 0.8
+  slotScale: 1.5
+  pickupSound: {fileID: 8300000, guid: 46020dbf3ee3f2b42ab5364c77247347, type: 3}
+  dropSound: {fileID: 0}
+--- !u!114 &610705952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610705948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: d46bd2d88c6eeb942aa3c24658d25e46, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &610705953
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610705948}
+  m_CullTransparentMesh: 1
 --- !u!1 &789958040
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,7 +1055,7 @@ GameObject:
   - component: {fileID: 789958043}
   - component: {fileID: 789958042}
   m_Layer: 5
-  m_Name: Star Shape
+  m_Name: orange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -936,8 +1077,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -730}
-  m_SizeDelta: {x: 140, y: 140}
+  m_AnchoredPosition: {x: 209.81, y: -731.3467}
+  m_SizeDelta: {x: 122.5825, y: 131.7067}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &789958042
 BoxCollider2D:
@@ -971,7 +1112,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.50001144, y: -0.31224632}
+  m_Offset: {x: -0.4227295, y: 1.5332336}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -982,7 +1123,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 111.53709, y: 111.42897}
+  m_Size: {x: 141.06519, y: 153.87512}
   m_EdgeRadius: 0
 --- !u!114 &789958043
 MonoBehaviour:
@@ -1023,7 +1164,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8b1f8d8f39fb99c498a07180c090fedb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 99e5ac38204957d49b8ae806c12ea76e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1055,7 +1196,7 @@ GameObject:
   - component: {fileID: 1121303373}
   - component: {fileID: 1121303372}
   m_Layer: 5
-  m_Name: Star Slot
+  m_Name: Apple Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1077,8 +1218,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -562, y: 375}
-  m_SizeDelta: {x: 300, y: 300}
+  m_AnchoredPosition: {x: -898, y: 293}
+  m_SizeDelta: {x: 319.6392, y: 319.6392}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1121303372
 MonoBehaviour:
@@ -1111,7 +1252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafcc38c0abd66a4a81b59459d7d3a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedShapeType: 3
+  acceptedShapeType: 4
   isOccupied: 0
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   highlightColor: {r: 0.7607843, g: 0.85490197, b: 0.73333335, a: 1}
@@ -1138,7 +1279,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3ecd64993102c96479d3111de5804a50, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f09173f5767b0b54e9e4c82cb81ff489, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1237,7 +1378,7 @@ GameObject:
   - component: {fileID: 1277166223}
   - component: {fileID: 1277166222}
   m_Layer: 5
-  m_Name: Rectangle Slot
+  m_Name: Banana Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1259,8 +1400,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -117, y: 281}
-  m_SizeDelta: {x: 360, y: 252}
+  m_AnchoredPosition: {x: -429, y: -87}
+  m_SizeDelta: {x: 384.6626, y: 360.7988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1277166222
 MonoBehaviour:
@@ -1274,7 +1415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafcc38c0abd66a4a81b59459d7d3a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedShapeType: 5
+  acceptedShapeType: 1
   isOccupied: 0
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   highlightColor: {r: 0.7607843, g: 0.85490197, b: 0.73333335, a: 1}
@@ -1301,7 +1442,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 40730caa6380b124984cb2bd7b110645, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 67ac4516164ce9a48a59d87bf214079e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1332,7 +1473,7 @@ GameObject:
   - component: {fileID: 1297641376}
   - component: {fileID: 1297641375}
   m_Layer: 5
-  m_Name: Circle Slot
+  m_Name: Orange Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1354,8 +1495,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -81.56384, y: -100}
-  m_SizeDelta: {x: 300, y: 300}
+  m_AnchoredPosition: {x: 35.01477, y: 7}
+  m_SizeDelta: {x: 266.0295, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1297641375
 MonoBehaviour:
@@ -1369,7 +1510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafcc38c0abd66a4a81b59459d7d3a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedShapeType: 0
+  acceptedShapeType: 3
   isOccupied: 0
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   highlightColor: {r: 0.7607843, g: 0.85490197, b: 0.73333335, a: 1}
@@ -1396,7 +1537,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4793186be8e8a6b439360be93336ae5d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 70b40c3579c37c647b47ecc4e51a935e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1428,7 +1569,7 @@ GameObject:
   - component: {fileID: 1362876214}
   - component: {fileID: 1362876213}
   m_Layer: 5
-  m_Name: Circle Shape
+  m_Name: Strawberry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1450,8 +1591,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -530}
-  m_SizeDelta: {x: 140, y: 140}
+  m_AnchoredPosition: {x: 212.76556, y: -533.9136}
+  m_SizeDelta: {x: 99.8161, y: 132.1729}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &1362876213
 BoxCollider2D:
@@ -1485,7 +1626,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.48644066, y: -0.1621399}
+  m_Offset: {x: 0.48644257, y: 0.29922485}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1496,7 +1637,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 111.58116, y: 112.229675}
+  m_Size: {x: 111.58116, y: 161.13507}
   m_EdgeRadius: 0
 --- !u!114 &1362876214
 MonoBehaviour:
@@ -1510,7 +1651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed376b07932bbc4d84c3769b016cc47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shapeType: 0
+  shapeType: 2
   isPlaced: 0
   trayScale: 1
   dragScale: 0.8
@@ -1537,7 +1678,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 65079328fc4e05c4c9a85c1137a0c78f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2498f0e738b3c6142b9b582cf39241bf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1774,7 +1915,7 @@ GameObject:
   - component: {fileID: 1789511381}
   - component: {fileID: 1789511383}
   m_Layer: 0
-  m_Name: Heart Slot
+  m_Name: Strawberry Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1796,8 +1937,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -666, y: -139}
-  m_SizeDelta: {x: 300, y: 300}
+  m_AnchoredPosition: {x: -877, y: -127}
+  m_SizeDelta: {x: 212.6816, y: 252.9624}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1789511381
 MonoBehaviour:
@@ -1819,7 +1960,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: da1781a04a99c10409af5f87e94a9e5c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f703cc3373bdc34db3134f0a6ecbea2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1849,7 +1990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafcc38c0abd66a4a81b59459d7d3a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedShapeType: 4
+  acceptedShapeType: 2
   isOccupied: 0
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   highlightColor: {r: 0.7596602, g: 0.8553459, b: 0.73430634, a: 1}
@@ -2034,7 +2175,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 1
+  m_text: Level 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2110,6 +2251,101 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920152742}
+  m_CullTransparentMesh: 1
+--- !u!1 &1921247737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1921247738}
+  - component: {fileID: 1921247741}
+  - component: {fileID: 1921247740}
+  - component: {fileID: 1921247739}
+  m_Layer: 5
+  m_Name: Watermelon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1921247738
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921247737}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 9.38705}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2045156285}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -274, y: 376}
+  m_SizeDelta: {x: 551.3384, y: 303.5785}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1921247739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921247737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cafcc38c0abd66a4a81b59459d7d3a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  acceptedShapeType: 0
+  isOccupied: 0
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightColor: {r: 0.7607843, g: 0.85490197, b: 0.73333335, a: 1}
+  correctColor: {r: 0, g: 1, b: 0, a: 1}
+  correctSound: {fileID: 0}
+  wrongSound: {fileID: 0}
+--- !u!114 &1921247740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921247737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5019608}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 14fcc2f907f5cf045b8058bc2e402c02, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1921247741
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921247737}
   m_CullTransparentMesh: 1
 --- !u!1 &1956353803
 GameObject:
@@ -2282,7 +2518,7 @@ GameObject:
   - component: {fileID: 2032218080}
   - component: {fileID: 2032218079}
   m_Layer: 5
-  m_Name: Heart Shape
+  m_Name: watermelon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2300,7 +2536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed376b07932bbc4d84c3769b016cc47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shapeType: 4
+  shapeType: 0
   isPlaced: 0
   trayScale: 1
   dragScale: 0.9
@@ -2339,7 +2575,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1621666, y: -0.648592}
+  m_Offset: {x: 1.0848999, y: 0.2741394}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2350,7 +2586,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 112.87826, y: 113.851135}
+  m_Size: {x: 269.74475, y: 154.45172}
   m_EdgeRadius: 0
 --- !u!225 &2032218080
 CanvasGroup:
@@ -2384,7 +2620,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2133c3436e3b9f7449d887f4e279d5f3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7de0a0947039a8947b1ccc065838befc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2418,8 +2654,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -130}
-  m_SizeDelta: {x: 140, y: 140}
+  m_AnchoredPosition: {x: 209.36, y: -138.76605}
+  m_SizeDelta: {x: 241.5987, y: 126.4679}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2045156284
 GameObject:
@@ -2454,6 +2690,7 @@ Transform:
   - {fileID: 1121303371}
   - {fileID: 1297641374}
   - {fileID: 1277166221}
+  - {fileID: 1921247738}
   m_Father: {fileID: 275289375}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2063488512
@@ -2624,6 +2861,7 @@ RectTransform:
   - {fileID: 261870299}
   - {fileID: 1362876212}
   - {fileID: 789958041}
+  - {fileID: 610705949}
   m_Father: {fileID: 275289375}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}

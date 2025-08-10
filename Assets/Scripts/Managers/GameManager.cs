@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -110,34 +111,10 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        if (currentLevel < totalLevels)
-        {
-            currentLevel++;
-            // Here you would load the next level scene
-            // For now, just reset the current level
-            ResetLevel();
-            if (levelText != null)
-                levelText.text = "Level " + currentLevel;
-        }
-        else
-        {
-            // Game complete! You could load a "congratulations" scene
-            Debug.Log("All levels complete!");
-        }
+        // Get current scene index
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        // Load next scene
+        SceneManager.LoadScene(currentScene + 1);
     }
 }
 
-// ====================
-// 4. SHAPE TYPE ENUM
-// ====================
-public enum ShapeType
-{
-    Circle,
-    Square,
-    Triangle,
-    Star,
-    Heart,
-    Rectangle,
-    Diamond,
-    Oval
-}

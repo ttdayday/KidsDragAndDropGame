@@ -28,6 +28,21 @@ public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+        
+        // Ensure shape is always on top when being dragged
+        Image image = GetComponent<Image>();
+        if (image != null)
+        {
+            image.raycastTarget = true;
+        }
+
+        // Make sure we have a Canvas Group for drag handling
+        if (canvasGroup == null)
+        {
+            canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        }
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.interactable = true;
 
         // Add CanvasGroup if it doesn't exist
         if (canvasGroup == null)
@@ -51,6 +66,10 @@ public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         startPosition = transform.position;
         startParent = transform.parent;
+
+        // Move to canvas root for proper layering
+        transform.SetParent(transform.root);
+        transform.SetAsLastSibling(); // This ensures it's drawn last (on top)
 
         // Scale to DRAG SIZE (0.8) maintaining original proportions
         transform.localScale = originalScale * dragScale;
