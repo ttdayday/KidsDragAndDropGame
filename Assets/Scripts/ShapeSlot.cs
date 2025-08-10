@@ -52,8 +52,8 @@ public class ShapeSlot : MonoBehaviour
         shape.transform.SetParent(transform);
         shape.transform.localPosition = Vector3.zero;
 
-        // Visual feedback
-        slotImage.color = correctColor;
+        // Hide the slot visual
+        slotImage.enabled = false;
 
         // Play correct sound
         if (correctSound != null)
@@ -72,6 +72,7 @@ public class ShapeSlot : MonoBehaviour
         }
 
         isOccupied = false;
+        slotImage.enabled = true;  // Show the slot visual again
         slotImage.color = normalColor;
     }
 
