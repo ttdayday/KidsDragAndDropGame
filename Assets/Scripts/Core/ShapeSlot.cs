@@ -25,7 +25,11 @@ public class ShapeSlot : MonoBehaviour
         if (slotImage == null)
             slotImage = gameObject.AddComponent<Image>();
 
+        // Ensure slot is visible and properly initialized on scene start
+        slotImage.enabled = true;
         slotImage.color = normalColor;
+        isOccupied = false;
+        currentShape = null;
     }
 
     public bool CanAcceptShape(DraggableShape shape)
@@ -72,6 +76,15 @@ public class ShapeSlot : MonoBehaviour
         }
 
         isOccupied = false;
+        
+        // Ensure we have a valid slot image
+        if (slotImage == null)
+        {
+            slotImage = GetComponent<Image>();
+            if (slotImage == null)
+                slotImage = gameObject.AddComponent<Image>();
+        }
+        
         slotImage.enabled = true;  // Show the slot visual again
         slotImage.color = normalColor;
     }
