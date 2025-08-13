@@ -29,6 +29,9 @@ public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         
+        // Store original scale
+        originalScale = transform.localScale;
+        
         // Ensure shape is always on top when being dragged
         Image image = GetComponent<Image>();
         if (image != null)
@@ -90,7 +93,7 @@ public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         if (isPlaced) return;
 
-        // Follow the mouse/finger (maintain drag scale)
+        // Follow the mouse/finger position
         rectTransform.anchoredPosition += eventData.delta;
     }
 
