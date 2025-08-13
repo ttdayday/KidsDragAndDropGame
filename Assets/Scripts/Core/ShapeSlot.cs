@@ -7,6 +7,14 @@ public class ShapeSlot : MonoBehaviour
     public ShapeType acceptedShapeType;
     public bool isOccupied = false;
 
+    [Header("Theme Overrides")]
+    [Tooltip("If false and overrideSprite is set, the slot will keep the override sprite instead of the Theme sprite.")]
+    public bool useThemeSprite = true;
+    [Tooltip("Optional per-slot sprite to use instead of the theme sprite.")]
+    public Sprite overrideSprite;
+    [Tooltip("Multiplier applied to shapes when they are scaled to fit this slot. Use to compensate for different art proportions.")]
+    public float spriteScaleMultiplier = 1f;
+
     [Header("Visual Feedback")]
     public Color normalColor = Color.white;
     public Color highlightColor = Color.yellow;
@@ -30,6 +38,13 @@ public class ShapeSlot : MonoBehaviour
         slotImage.color = normalColor;
         isOccupied = false;
         currentShape = null;
+
+        // Apply theme sprite if ThemeManager exists
+        if (UnityEngine.Object.FindObjectOfType<ThemeManager>() != null)
+        {
+            ThemeManager tm = UnityEngine.Object.FindObjectOfType<ThemeManager>();
+            tm.ApplySpriteToSlot(this);
+        }
     }
 
     public bool CanAcceptShape(DraggableShape shape)
