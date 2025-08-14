@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public enum GameState { Loading, ThemeSelect, Playing, Completed }
+
+    [Header("State")]
+    public GameState currentState = GameState.Playing;
     [Header("Game Objects")]
     public ShapeSlot[] allSlots;
     public DraggableShape[] allShapes;
@@ -24,8 +28,15 @@ public class GameManager : MonoBehaviour
     [Header("Level Management")]
     public int currentLevel = 1;
     public int totalLevels = 2;  // Updated to match actual number of levels
+    [Tooltip("If true the game will automatically advance to the next level after a delay when the puzzle is completed.")]
+    public bool enableAutoAdvance = true;
+    [Tooltip("Seconds to wait before auto-advancing to the next level.")]
+    public float autoAdvanceDelay = 3f;
+    [Tooltip("If true the player can skip the delay and go to the next level by clicking/tapping the screen after completion.")]
+    public bool allowSkipByClick = true;
 
     private bool puzzleComplete = false;
+    private Coroutine autoAdvanceCoroutine = null;
 
     void Start()
     {
@@ -56,12 +67,30 @@ public class GameManager : MonoBehaviour
         // Setup buttons
         if (nextLevelButton != null)
             nextLevelButton.onClick.AddListener(LoadNextLevel);
+        // If player clicks the next level button we should stop any auto-advance coroutine
+        if (nextLevelButton != null)
+            nextLevelButton.onClick.AddListener(StopAutoAdvance);
         if (resetButton != null)
             resetButton.onClick.AddListener(RestartLevel);
         if (menuButton != null)
             menuButton.onClick.AddListener(ReturnToLevelSelect);
 
         puzzleComplete = false;
+    }
+
+    // Methods for external UI to call based on the new storyboard
+    public void EnterLoadingState()
+    {
+        currentState = GameState.Loading;
+        // Optionally disable gameplay while loading
+        // For now this is a lightweight hook for UI scenes
+        Debug.Log("Entered Loading State");
+    }
+
+    public void EnterThemeSelectState()
+    {
+        currentState = GameState.ThemeSelect;
+        Debug.Log("Entered Theme Select State");
     }
 
     public void CheckPuzzleComplete()
@@ -77,7 +106,7 @@ public class GameManager : MonoBehaviour
 
         // Puzzle is complete!
         puzzleComplete = true;
-        StartCoroutine(OnPuzzleComplete());
+    StartCoroutine(OnPuzzleComplete());
     }
 
     IEnumerator OnPuzzleComplete()
@@ -150,6 +179,53 @@ public class GameManager : MonoBehaviour
         // Save progress
         PlayerPrefs.SetInt("UnlockedLevel", Mathf.Max(PlayerPrefs.GetInt("UnlockedLevel", 1), currentLevel + 1));
         PlayerPrefs.Save();
+
+        // Start auto advance if enabled (and not last level -> in which case it will go back to menu)
+        if (enableAutoAdvance)
+        {
+            // make sure we don't start multiple coroutines
+            if (autoAdvanceCoroutine != null)
+                StopCoroutine(autoAdvanceCoroutine);
+            autoAdvanceCoroutine = StartCoroutine(AutoAdvanceAfterDelay());
+        }
+    }
+
+    IEnumerator AutoAdvanceAfterDelay()
+    {
+        float remaining = autoAdvanceDelay;
+        // Simple countdown loop so we could extend to show remaining time in UI later
+        while (remaining > 0f)
+        {
+            // allow immediate skip if player clicks
+            if (allowSkipByClick && Input.GetMouseButtonDown(0))
+            {
+                break;
+            }
+            yield return null;
+            remaining -= Time.deltaTime;
+        }
+
+        autoAdvanceCoroutine = null;
+        LoadNextLevel();
+    }
+
+    void StopAutoAdvance()
+    {
+        if (autoAdvanceCoroutine != null)
+        {
+            StopCoroutine(autoAdvanceCoroutine);
+            autoAdvanceCoroutine = null;
+        }
+    }
+
+    void Update()
+    {
+        // Allow skipping the auto-advance by clicking/tapping anywhere after completion
+        if (puzzleComplete && allowSkipByClick && Input.GetMouseButtonDown(0))
+        {
+            StopAutoAdvance();
+            LoadNextLevel();
+        }
     }
 
     public void ResetLevel()

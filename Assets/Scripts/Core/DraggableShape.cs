@@ -24,6 +24,10 @@ public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public AudioClip pickupSound;
     public AudioClip dropSound;
 
+    [Header("Visual")]
+    // Optional Image to control the visual sprite for theme switching. If left null we try GetComponent<Image>()
+    public Image shapeImage;
+
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -61,6 +65,14 @@ public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         // Make sure we start at tray scale (should already be correct from editor)
         transform.localScale = originalScale * trayScale;
+
+        // Apply theme sprite if available
+        if (shapeImage == null)
+            shapeImage = GetComponent<Image>();
+        if (ThemeManager.Instance != null)
+        {
+            ThemeManager.Instance.ApplySpriteToShape(this);
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -152,7 +164,10 @@ public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         float scaleY = slotRect.rect.height / (shapeRect.rect.height / originalScale.y);
 
         // Use the smaller scale to ensure shape fits within slot
-        float finalScale = Mathf.Min(scaleX, scaleY);
+    float finalScale = Mathf.Min(scaleX, scaleY);
+
+    // Apply per-slot multiplier so designer can tweak proportions per level
+    finalScale *= slot.spriteScaleMultiplier;
 
         // Apply the calculated scale while maintaining proportions
         transform.localScale = originalScale * finalScale;
@@ -168,6 +183,15 @@ public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         // Return to TRAY SIZE (1.0) when reset
         transform.localScale = originalScale * trayScale;
+    }
+
+    // Called by ThemeManager to update the visual sprite
+    public void SetSprite(Sprite sprite)
+    {
+        if (shapeImage == null)
+            shapeImage = GetComponent<Image>();
+        if (shapeImage != null)
+            shapeImage.sprite = sprite;
     }
 
     public void UpdateStartPosition(Vector3 newPosition)

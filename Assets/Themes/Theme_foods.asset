@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ec7642cb84c1949a45943cd6f0e6f0, type: 3}
+  m_Name: Theme_foods
+  m_EditorClassIdentifier: 
+  themeName: 
+  shapeSprites:
+  - {fileID: 21300000, guid: 193f4396e3e0e3042a06aa2eed4b678b, type: 3}
+  - {fileID: 21300000, guid: ad47f1f3607572a42af9bc44706070fb, type: 3}
+  - {fileID: 21300000, guid: 4c06a196750cbd942aff2287f412948e, type: 3}
+  - {fileID: 21300000, guid: b2867442db4e2cb43b38fef8fce24c7d, type: 3}
+  - {fileID: 21300000, guid: bbba29735541d6f43acb6ad80d7f9ef0, type: 3}
+  slotSprites:
+  - {fileID: 21300000, guid: ad8210242f87f6f4ba5f37b7684cc4e4, type: 3}
+  - {fileID: 21300000, guid: adfe7ef4377fd9c4c9758da8493a4b43, type: 3}
+  - {fileID: 21300000, guid: e0646ae1e5b193e4fb1addade153785b, type: 3}
+  - {fileID: 21300000, guid: b71fd585383f4684f94813ecd6f711cd, type: 3}
+  - {fileID: 21300000, guid: 30d5cea43ff31844e92f2b8392479c58, type: 3}
