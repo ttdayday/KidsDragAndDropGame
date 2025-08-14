@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9ec7642cb84c1949a45943cd6f0e6f0, type: 3}
-  m_Name: Theme_foods
+  m_Name: Theme_Foods
   m_EditorClassIdentifier: 
-  themeName: 
+  themeName: Foods
+  themeIcon: {fileID: 21300000, guid: 186183f8ec2a07e42a01e6823708d56a, type: 3}
   shapeSprites:
   - {fileID: 21300000, guid: 193f4396e3e0e3042a06aa2eed4b678b, type: 3}
   - {fileID: 21300000, guid: ad47f1f3607572a42af9bc44706070fb, type: 3}

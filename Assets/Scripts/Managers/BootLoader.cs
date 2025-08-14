@@ -10,21 +10,26 @@ public class BootLoader : MonoBehaviour
     void Awake()
     {
         // Ensure ThemeManager exists and persists
-        if (ThemeManager.Instance == null)
+        // 1) Prefer an existing ThemeManager placed in the Boot scene (keeps your configured themes)
+        var existing = FindObjectOfType<ThemeManager>();
+        if (existing != null)
         {
-            if (themeManagerPrefab != null)
-            {
-                var tm = Instantiate(themeManagerPrefab);
-                DontDestroyOnLoad(tm.gameObject);
-            }
-            else
-            {
-                // Create a minimal ThemeManager if not provided
-                var go = new GameObject("ThemeManager");
-                go.AddComponent<ThemeManager>();
-                DontDestroyOnLoad(go);
-            }
+            DontDestroyOnLoad(existing.gameObject);
+            return;
         }
+
+        // 2) If no existing one, instantiate a prefab if assigned
+        if (themeManagerPrefab != null)
+        {
+            var tm = Instantiate(themeManagerPrefab);
+            DontDestroyOnLoad(tm.gameObject);
+            return;
+        }
+
+        // 3) Fallback: create a minimal ThemeManager (empty themes)
+        var go = new GameObject("ThemeManager");
+        go.AddComponent<ThemeManager>();
+        DontDestroyOnLoad(go);
     }
 
     void Start()

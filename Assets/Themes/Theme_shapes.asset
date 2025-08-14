@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9ec7642cb84c1949a45943cd6f0e6f0, type: 3}
-  m_Name: Theme_shapes
+  m_Name: Theme_Shapes
   m_EditorClassIdentifier: 
-  themeName: 
+  themeName: Shapes
+  themeIcon: {fileID: 21300000, guid: 7e57c7a091c7a5145809728a9b0d90ff, type: 3}
   shapeSprites:
   - {fileID: 21300000, guid: 8d53f9bfafe3ffa4da6d6713bbdd1520, type: 3}
   - {fileID: 21300000, guid: a9893013fd6417c4ca315f732887ae32, type: 3}

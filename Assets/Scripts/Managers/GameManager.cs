@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Level Management")]
     public int currentLevel = 1;
-    public int totalLevels = 2;  // Updated to match actual number of levels
+    public int totalLevels = 2;  // default; will be overridden by ThemeData.levelCount if available
     [Tooltip("If true the game will automatically advance to the next level after a delay when the puzzle is completed.")]
     public bool enableAutoAdvance = true;
     [Tooltip("Seconds to wait before auto-advancing to the next level.")]
@@ -40,6 +40,26 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        // Pull auto-advance config saved by ThemeSelect (if present)
+        float savedAuto = PlayerPrefs.GetFloat("AutoAdvanceSeconds", -1f);
+        if (savedAuto >= 0f) {
+            autoAdvanceDelay = savedAuto;
+        }
+
+        // If ThemeManager has a selected theme, override totalLevels from it
+        if (ThemeManager.Instance != null && ThemeManager.Instance.themes != null && ThemeManager.Instance.themes.Length > 0)
+        {
+            var tm = ThemeManager.Instance;
+            int idx = Mathf.Clamp(tm.selectedThemeIndex, 0, tm.themes.Length - 1);
+            var theme = tm.themes[idx];
+            if (theme != null)
+            {
+                int count = theme.levelCount;
+                if (count <= 0) count = 1; // fallback for older ThemeData assets
+                totalLevels = count;
+            }
+        }
+
         // Set current level based on scene name
         string sceneName = SceneManager.GetActiveScene().name;
         if (sceneName.StartsWith("Level_"))
@@ -251,17 +271,17 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        // Get current scene index
-        int currentScene = SceneManager.GetActiveScene().buildIndex;
-        
-        // If there's a next level, load it
-        if (currentScene < SceneManager.sceneCountInBuildSettings - 1)
+        // Decide based on theme's levelCount and currentLevel
+        if (currentLevel < totalLevels)
         {
-            SceneManager.LoadScene(currentScene + 1);
+            // Load next numbered level scene, e.g., Level_01 -> Level_02
+            int next = currentLevel + 1;
+            string nextName = $"Level_{next:00}";
+            SceneManager.LoadScene(nextName);
         }
         else
         {
-            // If it's the last level, go back to theme select
+            // Last level for this theme -> back to ThemeSelect
             SceneManager.LoadScene("ThemeSelect");
         }
     }
