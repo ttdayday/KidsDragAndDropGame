@@ -261,8 +261,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // If it's the last level, go back to level select
-            SceneManager.LoadScene("LevelSelect");
+            // If it's the last level, go back to theme select
+            SceneManager.LoadScene("ThemeSelect");
         }
     }
 
@@ -275,7 +275,7 @@ public class GameManager : MonoBehaviour
     public void ReturnToLevelSelect()
     {
         // Can be called from pause button or back button
-        SceneManager.LoadScene("LevelSelect");
+        SceneManager.LoadScene("ThemeSelect");
     }
 }
 
