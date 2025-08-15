@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,22 @@ public class GameManager : MonoBehaviour
     public Button menuButton;
     public Text levelText;
     public ParticleSystem celebrationParticles;
+    [Tooltip("Optional label to show auto-advance countdown on the win screen (TMP).")]
+    public TMP_Text autoAdvanceTMPLabel;
+    [Tooltip("Optional label to show auto-advance countdown on the win screen (legacy UI.Text).")]
+    public Text autoAdvanceTextLabel;
+
+    [Header("Completion FX (no text)")]
+    [Tooltip("Optional: RectTransform of the side tray to slide off-screen on completion.")]
+    public RectTransform sideTray;
+    [Tooltip("How far to slide the tray on completion (positive X moves it right off-screen).")]
+    public float traySlideOffset = 600f;
+    [Tooltip("Seconds to slide the tray.")]
+    public float traySlideTime = 0.35f;
+    [Tooltip("Balloon prefab (UI Image with BalloonFloat). We'll instantiate a few near the right side.")]
+    public GameObject balloonPrefab;
+    [Tooltip("Parent transform for spawned balloons (usually the WinPanel or a top-level UI container).")]
+    public RectTransform balloonParent;
 
     [Header("Audio")]
     public AudioClip levelCompleteSound;
@@ -140,7 +157,14 @@ public class GameManager : MonoBehaviour
             celebrationParticles.Play();
 
         // Wait a moment for effect
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
+
+        // Slide tray off-screen (if assigned)
+        if (sideTray != null)
+            yield return StartCoroutine(SlideRectX(sideTray, traySlideOffset, traySlideTime));
+
+        // Spawn a few balloons (if prefab provided)
+        SpawnBalloons(4);
 
         // Show win panel
         if (winPanel != null)
@@ -203,10 +227,15 @@ public class GameManager : MonoBehaviour
         // Start auto advance if enabled (and not last level -> in which case it will go back to menu)
         if (enableAutoAdvance)
         {
+            UpdateAutoAdvanceLabel(autoAdvanceDelay);
             // make sure we don't start multiple coroutines
             if (autoAdvanceCoroutine != null)
                 StopCoroutine(autoAdvanceCoroutine);
             autoAdvanceCoroutine = StartCoroutine(AutoAdvanceAfterDelay());
+        }
+        else
+        {
+            UpdateAutoAdvanceLabel(0f); // hide if not used
         }
     }
 
@@ -221,11 +250,13 @@ public class GameManager : MonoBehaviour
             {
                 break;
             }
+            UpdateAutoAdvanceLabel(remaining);
             yield return null;
             remaining -= Time.deltaTime;
         }
 
         autoAdvanceCoroutine = null;
+        UpdateAutoAdvanceLabel(0f);
         LoadNextLevel();
     }
 
@@ -236,6 +267,7 @@ public class GameManager : MonoBehaviour
             StopCoroutine(autoAdvanceCoroutine);
             autoAdvanceCoroutine = null;
         }
+    UpdateAutoAdvanceLabel(0f);
     }
 
     void Update()
@@ -309,6 +341,54 @@ public class GameManager : MonoBehaviour
     {
         // Can be called from pause button or back button
         SceneManager.LoadScene("ThemeSelect");
+    }
+
+    void UpdateAutoAdvanceLabel(float seconds)
+    {
+        // Hide when seconds <= 0
+        bool show = seconds > 0.05f;
+        // For toddlers we avoid letters; keep label empty but you may show a clock icon via UI instead
+        string text = string.Empty;
+        if (autoAdvanceTMPLabel != null)
+        {
+            autoAdvanceTMPLabel.text = text;
+            autoAdvanceTMPLabel.gameObject.SetActive(show);
+        }
+        if (autoAdvanceTextLabel != null)
+        {
+            autoAdvanceTextLabel.text = text;
+            autoAdvanceTextLabel.gameObject.SetActive(show);
+        }
+    }
+
+    // Helpers
+    IEnumerator SlideRectX(RectTransform rt, float deltaX, float duration)
+    {
+        Vector2 start = rt.anchoredPosition;
+        Vector2 target = start + new Vector2(deltaX, 0f);
+        float t = 0f;
+        while (t < duration)
+        {
+            t += Time.unscaledDeltaTime;
+            float k = Mathf.Clamp01(t / duration);
+            rt.anchoredPosition = Vector2.Lerp(start, target, k);
+            yield return null;
+        }
+        rt.anchoredPosition = target;
+    }
+
+    void SpawnBalloons(int count)
+    {
+        if (balloonPrefab == null || balloonParent == null) return;
+        var rect = balloonParent.rect;
+        for (int i = 0; i < count; i++)
+        {
+            var go = Instantiate(balloonPrefab, balloonParent);
+            var rt = go.GetComponent<RectTransform>();
+            float x = rect.width * 0.7f + Random.Range(-40f, 40f);
+            float y = -rect.height * 0.3f + Random.Range(-40f, 40f);
+            rt.anchoredPosition = new Vector2(x, y);
+        }
     }
 }
 
