@@ -163,14 +163,14 @@ public class GameManager : MonoBehaviour
         if (sideTray != null)
             yield return StartCoroutine(SlideRectX(sideTray, traySlideOffset, traySlideTime));
 
-        // Spawn a few balloons (if prefab provided)
-        SpawnBalloons(4);
-
-        // Show win panel
+        // Show win panel first so spawned children are visible
         if (winPanel != null)
         {
             winPanel.SetActive(true);
             
+
+        // Spawn a few balloons (if prefab provided)
+        SpawnBalloons(4);
             // Debug logging
             Debug.Log($"Current Level: {currentLevel}, Total Levels: {totalLevels}");
             
@@ -379,15 +379,33 @@ public class GameManager : MonoBehaviour
 
     void SpawnBalloons(int count)
     {
-        if (balloonPrefab == null || balloonParent == null) return;
-        var rect = balloonParent.rect;
+        if (balloonPrefab == null)
+        {
+            Debug.LogWarning("GameManager: Balloon prefab not assigned—no balloons will spawn.", this);
+            return;
+        }
+        // Fallback: if no parent set, try winPanel or the scene canvas
+        RectTransform parent = balloonParent;
+        if (parent == null)
+        {
+            if (winPanel != null) parent = winPanel.GetComponent<RectTransform>();
+            if (parent == null)
+            {
+                var canvas = FindObjectOfType<Canvas>();
+                if (canvas != null) parent = canvas.GetComponent<RectTransform>();
+            }
+        }
+        if (parent == null) return;
+
+        var rect = parent.rect;
         for (int i = 0; i < count; i++)
         {
-            var go = Instantiate(balloonPrefab, balloonParent);
+            var go = Instantiate(balloonPrefab, parent);
             var rt = go.GetComponent<RectTransform>();
             float x = rect.width * 0.7f + Random.Range(-40f, 40f);
             float y = -rect.height * 0.3f + Random.Range(-40f, 40f);
             rt.anchoredPosition = new Vector2(x, y);
+            go.transform.SetAsLastSibling(); // ensure on top of win visuals
         }
     }
 }
