@@ -286,6 +286,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void LoadPreviousLevel()
+    {
+        int prev = Mathf.Max(1, currentLevel - 1);
+        if (prev == currentLevel)
+        {
+            // already on first level, go back to theme select
+            SceneManager.LoadScene("ThemeSelect");
+            return;
+        }
+        string prevName = $"Level_{prev:00}";
+        SceneManager.LoadScene(prevName);
+    }
+
     public void RestartLevel()
     {
         // Reload the current scene

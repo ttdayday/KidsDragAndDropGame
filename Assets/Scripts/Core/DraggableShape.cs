@@ -191,7 +191,10 @@ public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         if (shapeImage == null)
             shapeImage = GetComponent<Image>();
         if (shapeImage != null)
+        {
             shapeImage.sprite = sprite;
+            shapeImage.preserveAspect = true; // keep original proportions
+        }
     }
 
     public void UpdateStartPosition(Vector3 newPosition)

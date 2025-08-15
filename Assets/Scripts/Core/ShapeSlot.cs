@@ -32,6 +32,7 @@ public class ShapeSlot : MonoBehaviour
         slotImage = GetComponent<Image>();
         if (slotImage == null)
             slotImage = gameObject.AddComponent<Image>();
+    slotImage.preserveAspect = true;
 
         // Ensure slot is visible and properly initialized on scene start
         slotImage.enabled = true;
