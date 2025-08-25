@@ -139,8 +139,10 @@ public class GameManager : MonoBehaviour
         if (puzzleComplete) return;
 
         // Check if all slots are filled
+        Debug.Log($"CheckPuzzleComplete: checking {allSlots.Length} slots", this);
         foreach (var slot in allSlots)
         {
+            Debug.Log($"  Slot {slot.name} occupied={slot.isOccupied}", slot);
             if (!slot.isOccupied)
                 return; // Puzzle not complete yet
         }
