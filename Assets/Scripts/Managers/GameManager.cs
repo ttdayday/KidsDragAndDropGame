@@ -88,11 +88,9 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // Find all slots and shapes if not assigned
-        if (allSlots.Length == 0)
-            allSlots = FindObjectsOfType<ShapeSlot>();
-        if (allShapes.Length == 0)
-            allShapes = FindObjectsOfType<DraggableShape>();
+    // Always refresh slots and shapes for each scene
+    allSlots = FindObjectsOfType<ShapeSlot>();
+    allShapes = FindObjectsOfType<DraggableShape>();
 
         // Setup UI
         if (levelText != null)
