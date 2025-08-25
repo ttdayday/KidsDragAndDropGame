@@ -60,7 +60,6 @@ public class ShapeSlot : MonoBehaviour
             // Play wrong sound
             if (wrongSound != null)
                 AudioSource.PlayClipAtPoint(wrongSound, Camera.main.transform.position, 0.5f);
-            Debug.Log($"ShapeSlot: rejected placement of {shape.name} on slot {name} (expected {acceptedShapeType}, shape type={shape.shapeType})", this);
             return;
         }
 
@@ -79,9 +78,6 @@ public class ShapeSlot : MonoBehaviour
         // Play correct sound
         if (correctSound != null)
             AudioSource.PlayClipAtPoint(correctSound, Camera.main.transform.position, 0.5f);
-
-    Debug.Log($"ShapeSlot: placed {shape.name} into slot {name}", this);
-    Debug.Log($"ShapeSlot: placed into slot instance id={GetInstanceID()}", this);
 
         // Check if puzzle is complete
         FindObjectOfType<GameManager>()?.CheckPuzzleComplete();

@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(CanvasScaler))]
-public class CanvasScaler : MonoBehaviour
+[RequireComponent(typeof(UnityEngine.UI.CanvasScaler))]
+public class ProjectCanvasScaler : MonoBehaviour
 {
     private UnityEngine.UI.CanvasScaler scaler;
     private float defaultResolutionWidth = 1920f;
@@ -11,7 +11,7 @@ public class CanvasScaler : MonoBehaviour
 
     void Start()
     {
-        scaler = GetComponent<UnityEngine.UI.CanvasScaler>();
+    scaler = GetComponent<UnityEngine.UI.CanvasScaler>();
         UpdateCanvasScaling();
     }
 
@@ -24,7 +24,7 @@ public class CanvasScaler : MonoBehaviour
             // Screen is wider than target - use height as reference
             float scaleFactor = Screen.height / defaultResolutionHeight;
             scaler.referenceResolution = new Vector2(defaultResolutionWidth, defaultResolutionHeight);
-            scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+            scaler.screenMatchMode = UnityEngine.UI.CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
             scaler.matchWidthOrHeight = 1f; // Match height
         }
         else
@@ -32,7 +32,7 @@ public class CanvasScaler : MonoBehaviour
             // Screen is taller than target - use width as reference
             float scaleFactor = Screen.width / defaultResolutionWidth;
             scaler.referenceResolution = new Vector2(defaultResolutionWidth, defaultResolutionHeight);
-            scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+            scaler.screenMatchMode = UnityEngine.UI.CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
             scaler.matchWidthOrHeight = 0f; // Match width
         }
     }

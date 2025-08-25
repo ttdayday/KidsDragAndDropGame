@@ -88,24 +88,13 @@ public class GameManager : MonoBehaviour
             }
         }
 
-    // Always refresh slots and shapes for each scene
-    allSlots = FindObjectsOfType<ShapeSlot>();
-    allShapes = FindObjectsOfType<DraggableShape>();
-
-        // Debug: list discovered slots with instance IDs
-        Debug.Log($"GameManager: discovered {allSlots.Length} ShapeSlots for this scene:");
-        foreach (var s in allSlots)
-        {
-            Debug.Log($"  Slot '{s.name}' id={s.GetInstanceID()} occupied={s.isOccupied}", s);
-        }
+        // Find all slots and shapes if not assigned
+        if (allSlots.Length == 0)
+            allSlots = FindObjectsOfType<ShapeSlot>();
+        if (allShapes.Length == 0)
+            allShapes = FindObjectsOfType<DraggableShape>();
 
         // Setup UI
-        // If levelText was assigned to objects from another scene, try to find a local one
-        if (levelText == null)
-        {
-            var txt = GameObject.Find("LevelText");
-            if (txt != null) levelText = txt.GetComponent<Text>();
-        }
         if (levelText != null)
             levelText.text = "Level " + currentLevel;
 
@@ -145,26 +134,16 @@ public class GameManager : MonoBehaviour
     {
         if (puzzleComplete) return;
 
-        // Use a fresh lookup of slots in the scene to avoid stale / destroyed instance references
-        var currentSlots = FindObjectsOfType<ShapeSlot>();
-        Debug.Log($"CheckPuzzleComplete: discovered {currentSlots.Length} slots at check time (cached={allSlots.Length})", this);
-
-        foreach (var slot in currentSlots)
+        // Check if all slots are filled
+        foreach (var slot in allSlots)
         {
-            Debug.Log($"  Slot '{slot.name}' id={slot.GetInstanceID()} occupied={slot.isOccupied}", slot);
             if (!slot.isOccupied)
-            {
-                // Not complete yet — cache the current snapshot so other systems can use it if needed
-                allSlots = currentSlots;
                 return; // Puzzle not complete yet
-            }
         }
 
         // Puzzle is complete!
         puzzleComplete = true;
-        // Cache the latest slots for any follow-up calls
-        allSlots = currentSlots;
-        StartCoroutine(OnPuzzleComplete());
+    StartCoroutine(OnPuzzleComplete());
     }
 
     IEnumerator OnPuzzleComplete()
@@ -305,10 +284,6 @@ public class GameManager : MonoBehaviour
     {
         puzzleComplete = false;
 
-        // Refresh references in case scene objects changed since Start
-        allShapes = FindObjectsOfType<DraggableShape>();
-        allSlots = FindObjectsOfType<ShapeSlot>();
-
         // Reset all shapes
         foreach (var shape in allShapes)
         {
@@ -321,10 +296,9 @@ public class GameManager : MonoBehaviour
             slot.RemoveShape();
         }
 
-        // Hide win panel and stop any running auto-advance
+        // Hide win panel
         if (winPanel != null)
             winPanel.SetActive(false);
-        StopAutoAdvance();
     }
 
     public void LoadNextLevel()
