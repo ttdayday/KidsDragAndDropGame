@@ -145,18 +145,26 @@ public class GameManager : MonoBehaviour
     {
         if (puzzleComplete) return;
 
-        // Check if all slots are filled
-        Debug.Log($"CheckPuzzleComplete: checking {allSlots.Length} slots", this);
-        foreach (var slot in allSlots)
+        // Use a fresh lookup of slots in the scene to avoid stale / destroyed instance references
+        var currentSlots = FindObjectsOfType<ShapeSlot>();
+        Debug.Log($"CheckPuzzleComplete: discovered {currentSlots.Length} slots at check time (cached={allSlots.Length})", this);
+
+        foreach (var slot in currentSlots)
         {
-            Debug.Log($"  Slot {slot.name} occupied={slot.isOccupied}", slot);
+            Debug.Log($"  Slot '{slot.name}' id={slot.GetInstanceID()} occupied={slot.isOccupied}", slot);
             if (!slot.isOccupied)
+            {
+                // Not complete yet — cache the current snapshot so other systems can use it if needed
+                allSlots = currentSlots;
                 return; // Puzzle not complete yet
+            }
         }
 
         // Puzzle is complete!
         puzzleComplete = true;
-    StartCoroutine(OnPuzzleComplete());
+        // Cache the latest slots for any follow-up calls
+        allSlots = currentSlots;
+        StartCoroutine(OnPuzzleComplete());
     }
 
     IEnumerator OnPuzzleComplete()
@@ -297,6 +305,10 @@ public class GameManager : MonoBehaviour
     {
         puzzleComplete = false;
 
+        // Refresh references in case scene objects changed since Start
+        allShapes = FindObjectsOfType<DraggableShape>();
+        allSlots = FindObjectsOfType<ShapeSlot>();
+
         // Reset all shapes
         foreach (var shape in allShapes)
         {
@@ -309,9 +321,10 @@ public class GameManager : MonoBehaviour
             slot.RemoveShape();
         }
 
-        // Hide win panel
+        // Hide win panel and stop any running auto-advance
         if (winPanel != null)
             winPanel.SetActive(false);
+        StopAutoAdvance();
     }
 
     public void LoadNextLevel()
