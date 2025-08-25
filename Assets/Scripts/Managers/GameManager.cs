@@ -93,6 +93,12 @@ public class GameManager : MonoBehaviour
     allShapes = FindObjectsOfType<DraggableShape>();
 
         // Setup UI
+        // If levelText was assigned to objects from another scene, try to find a local one
+        if (levelText == null)
+        {
+            var txt = GameObject.Find("LevelText");
+            if (txt != null) levelText = txt.GetComponent<Text>();
+        }
         if (levelText != null)
             levelText.text = "Level " + currentLevel;
 
