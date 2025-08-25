@@ -81,6 +81,7 @@ public class ShapeSlot : MonoBehaviour
             AudioSource.PlayClipAtPoint(correctSound, Camera.main.transform.position, 0.5f);
 
     Debug.Log($"ShapeSlot: placed {shape.name} into slot {name}", this);
+    Debug.Log($"ShapeSlot: placed into slot instance id={GetInstanceID()}", this);
 
         // Check if puzzle is complete
         FindObjectOfType<GameManager>()?.CheckPuzzleComplete();

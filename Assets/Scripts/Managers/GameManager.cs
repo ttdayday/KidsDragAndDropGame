@@ -92,6 +92,13 @@ public class GameManager : MonoBehaviour
     allSlots = FindObjectsOfType<ShapeSlot>();
     allShapes = FindObjectsOfType<DraggableShape>();
 
+        // Debug: list discovered slots with instance IDs
+        Debug.Log($"GameManager: discovered {allSlots.Length} ShapeSlots for this scene:");
+        foreach (var s in allSlots)
+        {
+            Debug.Log($"  Slot '{s.name}' id={s.GetInstanceID()} occupied={s.isOccupied}", s);
+        }
+
         // Setup UI
         // If levelText was assigned to objects from another scene, try to find a local one
         if (levelText == null)
